@@ -1,3 +1,0 @@
-<?php
-#UPDATE.php
-?>

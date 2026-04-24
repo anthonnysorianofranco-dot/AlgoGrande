@@ -1,3 +1,7 @@
+<?php
+#index.php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +11,7 @@
 </head>
 <body>
     <div class="Log_in" id="Log_in">
-        <form action="READ.php" method="POST">
+        <form action="auth/login.php" method="POST">
             <label>Log in</label>
 
             <input type="text" name="nombre_usuario_login" placeholder="Nombre de Usuario" required>
@@ -18,7 +22,7 @@
     </div>
 
     <div class="Sign_up" id="Sign_up">
-        <form action="CREATE.php" method="POST">
+        <form action="auth/register.php" method="POST">
             <label>Sign up</label>
 
             <input type="text" name="nombre_completo_sign_up" placeholder="Nombre Completo" required>
