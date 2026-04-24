@@ -1,0 +1,221 @@
+/* ========================= */
+/* RESET GENERAL */
+/* ========================= */
+/* Quita márgenes y paddings por defecto del navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ========================= */
+/* ESTILO GENERAL DEL BODY */
+/* ========================= */
+body {
+    background: #0f172a; /* Fondo oscuro principal */
+    color: #fff;         /* Texto blanco por defecto */
+}
+
+/* ========================= */
+/* LOGIN & SIGN UP */
+/* ========================= */
+
+/* Centra login y registro en toda la pantalla */
+.Log_in, .Sign_up {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo del formulario de login y registro */
+.Log_in form,
+.Sign_up form {
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 15px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Títulos dentro de los formularios */
+.Log_in form label,
+.Sign_up form label {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Inputs de login y signup */
+.Log_in form input,
+.Sign_up form input {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #334155;
+    color: white;
+}
+
+/* Placeholder de los inputs */
+.Log_in form input::placeholder,
+.Sign_up form input::placeholder {
+    color: #94a3b8;
+}
+
+/* Botón de enviar */
+.Log_in form input[type="submit"],
+.Sign_up form input[type="submit"] {
+    background: #3b82f6;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Hover del botón */
+.Log_in form input[type="submit"]:hover,
+.Sign_up form input[type="submit"]:hover {
+    background: #2563eb;
+}
+
+/* ========================= */
+/* SIDEBAR (MENÚ IZQUIERDO) */
+/* ========================= */
+
+.sidebar {
+    position: fixed; /* Fijo en pantalla */
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #020617;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Título del sidebar */
+.sidebar h1 {
+    text-align: center;
+    color: #3b82f6;
+}
+
+/* Links del sidebar */
+.sidebar a {
+    color: #cbd5f5;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hover del menú */
+.sidebar a:hover {
+    background: #1e293b;
+}
+
+/* ========================= */
+/* CONTENIDO PRINCIPAL */
+/* ========================= */
+
+.main-content {
+    margin-left: 220px; /* espacio para el sidebar */
+    padding: 30px;
+}
+
+/* ========================= */
+/* CREAR FORO */
+/* ========================= */
+
+.create-post {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Inputs y textarea del formulario */
+.create-post input,
+.create-post textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #334155;
+    color: white;
+}
+
+/* Tamaño del textarea */
+.create-post textarea {
+    height: 100px;
+}
+
+/* Botón crear */
+.create-post input[type="submit"] {
+    background: #3b82f6;
+    cursor: pointer;
+}
+
+/* Botón cancelar */
+#createPost input[type="button"] {
+    background: #ef4444;
+    cursor: pointer;
+}
+
+/* ========================= */
+/* POST (FOROS) */
+/* ========================= */
+
+.post {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Animación hover del post */
+.post:hover {
+    transform: translateY(-3px);
+}
+
+/* Header del post (usuario + fecha) */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Título del post */
+.post-title {
+    text-align: center;
+    margin: 10px 0;
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* Contenido del post */
+.post-content {
+    margin-bottom: 10px;
+}
+
+/* Footer del post (chat) */
+.post-footer {
+    color: #22c55e;
+}
+
+/* ========================= */
+/* OCULTAR ELEMENTOS */
+/* ========================= */
+
+/* Clase usada para ocultar el formulario */
+.hidden {
+    display: none;
+}

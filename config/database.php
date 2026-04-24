@@ -15,5 +15,5 @@ if ($conn->connect_error) {
 }
 
 // 🔹 Si no hubo errores, se muestra este mensaje
-echo "Conectado correctamente";
+//echo "Conectado correctamente";
 ?>
