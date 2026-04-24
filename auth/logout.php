@@ -1,6 +1,4 @@
 <?php
-if(isset($_POST["log_out"])){
-
     session_start();
 
     session_unset();
@@ -8,5 +6,4 @@ if(isset($_POST["log_out"])){
 
     header("Location: ../index.php");
     exit();
-}
 ?>
