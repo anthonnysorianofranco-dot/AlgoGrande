@@ -1,26 +1,22 @@
 /* ========================= */
 /* RESET */
 /* ========================= */
-/* Elimina márgenes y paddings por defecto del navegador */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Incluye padding/border en el tamaño */
+    box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* Estilo base del body */
 body {
-    background: #0f172a; /* fondo oscuro principal */
-    color: #fff; /* texto blanco */
+    background: #0f172a;
+    color: #fff;
 }
-
 
 /* ========================= */
 /* LOGIN & SIGNUP */
 /* ========================= */
 
-/* Centra vertical y horizontalmente */
 .Log_in, .Sign_up {
     height: 100vh;
     display: flex;
@@ -28,7 +24,7 @@ body {
     align-items: center;
 }
 
-/* SOLO afecta los formularios de login y signup */
+/* SOLO login y signup */
 .Log_in form,
 .Sign_up form {
     background: #1e293b;
@@ -43,7 +39,6 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* Título del form */
 .Log_in form label,
 .Sign_up form label {
     font-size: 24px;
@@ -51,7 +46,6 @@ body {
     text-align: center;
 }
 
-/* Inputs */
 .Log_in form input,
 .Sign_up form input {
     padding: 12px;
@@ -61,13 +55,11 @@ body {
     color: white;
 }
 
-/* Placeholder */
 .Log_in form input::placeholder,
 .Sign_up form input::placeholder {
     color: #94a3b8;
 }
 
-/* Botón submit */
 .Log_in form input[type="submit"],
 .Sign_up form input[type="submit"] {
     background: #3b82f6;
@@ -75,18 +67,15 @@ body {
     font-weight: bold;
 }
 
-/* Hover botón */
 .Log_in form input[type="submit"]:hover,
 .Sign_up form input[type="submit"]:hover {
     background: #2563eb;
 }
 
-
 /* ========================= */
 /* SIDEBAR */
 /* ========================= */
 
-/* Menú lateral fijo */
 .sidebar {
     position: fixed;
     top: 0;
@@ -101,16 +90,14 @@ body {
     padding: 20px;
     gap: 20px;
 
-    z-index: 1000; /* Siempre por encima */
+    z-index: 1000;
 }
 
-/* Título del sidebar */
 .sidebar h1 {
     text-align: center;
     color: #3b82f6;
 }
 
-/* Links del menú */
 .sidebar a {
     color: #cbd5f5;
     padding: 10px;
@@ -119,31 +106,26 @@ body {
     cursor: pointer;
 }
 
-/* Hover links */
 .sidebar a:hover {
     background: #1e293b;
 }
-
 
 /* ========================= */
 /* CONTENIDO GENERAL */
 /* ========================= */
 
-/* Contenido principal y foro */
 .main-content,
 .foro-container {
-    margin-left: 220px; /* evita que se meta debajo del sidebar */
+    margin-left: 220px;
     width: calc(100% - 220px);
     padding: 30px;
     min-height: 100vh;
 }
 
-
 /* ========================= */
-/* FORM CREAR FORO / COMENTARIO */
+/* FORMULARIOS */
 /* ========================= */
 
-/* Contenedor del formulario */
 .create-post {
     background: #1e293b;
     border: 1px solid #334155;
@@ -156,14 +138,12 @@ body {
     gap: 15px;
 }
 
-/* Título */
 .create-post label {
     font-weight: bold;
     text-align: center;
     color: #38bdf8;
 }
 
-/* Inputs y textarea */
 .create-post input,
 .create-post textarea {
     padding: 12px;
@@ -173,13 +153,11 @@ body {
     color: white;
 }
 
-/* Textarea */
 .create-post textarea {
     height: 100px;
     resize: none;
 }
 
-/* Botón crear */
 .create-post input[type="submit"] {
     background: #3b82f6;
     cursor: pointer;
@@ -190,19 +168,17 @@ body {
     background: #2563eb;
 }
 
-/* Botón cancelar */
+/* botón cancelar */
 #createPost input[type="button"] {
     background: #ef4444;
     cursor: pointer;
     font-weight: bold;
 }
 
-
 /* ========================= */
 /* POSTS */
 /* ========================= */
 
-/* Contenedor del post */
 .post {
     background: #1e293b;
     border: 1px solid #334155;
@@ -214,20 +190,17 @@ body {
     transition: 0.3s;
 }
 
-/* Efecto hover */
 .post:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
-/* Header del post */
 .post-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
 
-/* Título */
 .post-title {
     text-align: center;
     margin: 10px 0;
@@ -236,47 +209,39 @@ body {
     font-size: 18px;
 }
 
-/* Contenido */
 .post-content {
     margin-bottom: 10px;
     line-height: 1.5;
 }
 
-/* Footer */
 .post-footer {
     color: #22c55e;
     font-size: 14px;
 }
 
-
 /* ========================= */
-/* FORO HEADER (POST PRINCIPAL) */
+/* FORO HEADER */
 /* ========================= */
 
-/* Diferente color para distinguirlo de comentarios */
 .foro-header {
-    background: #172554; /* azul oscuro distinto */
+    background: #172554; /* distinto a comentarios */
     border: 1px solid #3b82f6;
 
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 25px;
-    width: 100%;
 
     box-shadow: 0 8px 20px rgba(59,130,246,0.25);
 }
 
-/* Título más grande en foro */
 .foro-header .post-title {
     font-size: 22px;
 }
-
 
 /* ========================= */
 /* COMENTARIOS */
 /* ========================= */
 
-/* Contenedor del comentario */
 .comment {
     background: #1e293b;
     border: 1px solid #334155;
@@ -285,7 +250,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Header comentario */
 .comment-header {
     display: flex;
     justify-content: space-between;
@@ -293,18 +257,45 @@ body {
     color: #94a3b8;
 }
 
-/* Contenido comentario */
 .comment-content {
     margin-top: 5px;
     line-height: 1.4;
 }
 
-
 /* ========================= */
 /* OCULTO */
 /* ========================= */
 
-/* Clase para esconder elementos */
 .hidden {
     display: none;
+}
+
+/* ========================= */
+/* RESPONSIVE (MÓVIL) */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .main-content,
+    .foro-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .post {
+        padding: 15px;
+    }
+
+    .create-post {
+        padding: 15px;
+    }
 }

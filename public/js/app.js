@@ -1,82 +1,64 @@
-console.log("JS funcionando"); // Verifica que el archivo JS esté cargando
+// =========================
+// DEBUG
+// =========================
+console.log("JS funcionando");
 
-// Espera a que todo el HTML cargue antes de ejecutar el código
+
+// =========================
+// CUANDO CARGA EL DOM
+// =========================
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
-    // REFERENCIAS A ELEMENTOS
+    // ELEMENTOS
     // =========================
-
-    // Botón del menú "Crear Foro"
     const btnCrear = document.getElementById("btnCrearForo");
-
-    // Contenedor del formulario de crear foro
     const form = document.getElementById("createPost");
-
-    // Botón cancelar dentro del formulario
     const btnCancelar = document.getElementById("btnCancelar");
 
 
     // =========================
-    // MOSTRAR / OCULTAR FORMULARIO
+    // MOSTRAR / OCULTAR FORM
     // =========================
-
-    // Si existen el botón y el formulario
     if (btnCrear && form) {
-
         btnCrear.addEventListener("click", (e) => {
-
-            // Evita que el link haga navegación (#)
             e.preventDefault();
-
-            // Alterna la clase "hidden"
-            // Si está oculto → lo muestra
-            // Si está visible → lo oculta
             form.classList.toggle("hidden");
         });
     }
 
 
     // =========================
-    // BOTÓN CANCELAR
+    // CANCELAR FORM
     // =========================
-
     if (btnCancelar && form) {
-
         btnCancelar.addEventListener("click", () => {
-
-            // Oculta el formulario
             form.classList.add("hidden");
 
-            // Limpia el textarea (contenido del foro)
+            // limpiar campos
+            const input = form.querySelector("input[type='text']");
             const textarea = form.querySelector("textarea");
 
+            if (input) input.value = "";
             if (textarea) textarea.value = "";
         });
     }
 
 
     // =========================
-    // CLICK EN POST (REDIRECCIÓN)
+    // CLICK EN POSTS (PC + MÓVIL)
     // =========================
+    document.addEventListener("click", (e) => {
 
-    // Selecciona todos los div con clase "post"
-    document.querySelectorAll(".post").forEach(post => {
+        const post = e.target.closest(".post");
 
-        // Agrega evento click a cada post
-        post.addEventListener("click", () => {
+        if (!post) return;
 
-            // Obtiene el id desde data-id
-            const id = post.dataset.id;
+        const id = post.dataset.id;
 
-            // Si existe el id
-            if (id) {
-
-                // Redirige a foro.php pasando el id por URL
-                // Ejemplo: foro.php?id=3
-                window.location.href = `foro.php?id=${id}`;
-            }
-        });
+        if (id) {
+            window.location.href = `foro.php?id=${id}`;
+        }
     });
 
 });
