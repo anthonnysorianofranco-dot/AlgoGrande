@@ -65,6 +65,7 @@ body {
     background: #3b82f6;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
 }
 
 .Log_in form input[type="submit"]:hover,
@@ -104,6 +105,7 @@ body {
     border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .sidebar a:hover {
@@ -188,6 +190,10 @@ body {
 
     cursor: pointer;
     transition: 0.3s;
+
+    /* 🔥 evita problemas de click en móvil */
+    position: relative;
+    z-index: 1;
 }
 
 .post:hover {
@@ -224,7 +230,7 @@ body {
 /* ========================= */
 
 .foro-header {
-    background: #172554; /* distinto a comentarios */
+    background: #172554; /* diferente a comentarios */
     border: 1px solid #3b82f6;
 
     padding: 20px;
