@@ -310,24 +310,32 @@ body {
 /* BOTÓN VER COMENTARIOS */
 /* ========================= */
 
-/* Botón principal */
 .btn-ver {
-    margin-top: 10px;        /* separación del contenido */
-    padding: 10px;
-    width: 100%;             /* ocupa todo el ancho */
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 15px;
 
-    border: none;
+    background: #3b82f6; /* azul principal */
+    color: #fff;
+
     border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
 
-    background: #22c55e;     /* verde */
-    color: white;
+    font-size: 14px;
     font-weight: bold;
 
-    cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.2s ease;
 }
 
-/* Efecto hover */
+/* Hover bonito */
 .btn-ver:hover {
-    background: #16a34a;     /* verde más oscuro */
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(59,130,246,0.3);
+}
+
+/* Para que no se vea pegado */
+.post .btn-ver {
+    margin-top: 10px;
 }

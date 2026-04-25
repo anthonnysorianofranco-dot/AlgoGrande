@@ -63,9 +63,9 @@ function Mostrar_Foros(){
 
                 <!-- BOTÓN PARA IR AL FORO -->
                 <!-- data-id guarda el ID del foro para usarlo en JS -->
-                <button class="btn-ver" data-id="'.$row["id_foro"].'">
+                <a href="../pages/foro.php?id='.$row["id_foro"].'" class="btn-ver">
                     Ver Comentarios
-                </button>
+                </a>
 
             </div>
             ';
