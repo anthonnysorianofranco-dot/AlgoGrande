@@ -3,39 +3,38 @@
 // =========================
 console.log("JS funcionando");
 
-
 // =========================
 // CUANDO CARGA EL DOM
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
-    // ELEMENTOS
+    // ELEMENTOS DEL DOM
     // =========================
-    const btnCrear = document.getElementById("btnCrearForo");
-    const form = document.getElementById("createPost");
-    const btnCancelar = document.getElementById("btnCancelar");
-
+    const btnCrear = document.getElementById("btnCrearForo"); // botón del menú
+    const form = document.getElementById("createPost");       // formulario
+    const btnCancelar = document.getElementById("btnCancelar"); // botón cancelar
 
     // =========================
     // MOSTRAR / OCULTAR FORM
     // =========================
     if (btnCrear && form) {
         btnCrear.addEventListener("click", (e) => {
-            e.preventDefault();
-            form.classList.toggle("hidden");
+            e.preventDefault(); // evita recargar la página
+            form.classList.toggle("hidden"); // muestra/oculta
         });
     }
 
-
     // =========================
-    // CANCELAR FORM
+    // BOTÓN CANCELAR
     // =========================
     if (btnCancelar && form) {
         btnCancelar.addEventListener("click", () => {
+
+            // Oculta el formulario
             form.classList.add("hidden");
 
-            // limpiar campos
+            // Limpia los campos
             const input = form.querySelector("input[type='text']");
             const textarea = form.querySelector("textarea");
 
@@ -44,21 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     // =========================
-    // CLICK EN POSTS (PC + MÓVIL)
+    // BOTÓN "VER COMENTARIOS"
     // =========================
-    document.addEventListener("click", (e) => {
+    // Busca todos los botones creados en PHP
+    document.querySelectorAll(".btn-ver").forEach(btn => {
 
-        const post = e.target.closest(".post");
+        btn.addEventListener("click", () => {
 
-        if (!post) return;
+            // Obtener el ID del foro desde data-id
+            const id = btn.dataset.id;
 
-        const id = post.dataset.id;
+            // Redirigir a foro.php con ese ID
+            if (id) {
+                window.location.href = `foro.php?id=${id}`;
+            }
 
-        if (id) {
-            window.location.href = `foro.php?id=${id}`;
-        }
+        });
+
     });
 
 });

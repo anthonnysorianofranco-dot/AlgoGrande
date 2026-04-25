@@ -305,3 +305,29 @@ body {
         padding: 15px;
     }
 }
+
+/* ========================= */
+/* BOTÓN VER COMENTARIOS */
+/* ========================= */
+
+/* Botón principal */
+.btn-ver {
+    margin-top: 10px;        /* separación del contenido */
+    padding: 10px;
+    width: 100%;             /* ocupa todo el ancho */
+
+    border: none;
+    border-radius: 8px;
+
+    background: #22c55e;     /* verde */
+    color: white;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Efecto hover */
+.btn-ver:hover {
+    background: #16a34a;     /* verde más oscuro */
+}
