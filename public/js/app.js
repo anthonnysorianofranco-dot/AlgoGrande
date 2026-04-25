@@ -1,65 +1,82 @@
-/* ========================= */
-/* PRUEBA DE CONEXIÓN JS */
-/* ========================= */
-// Esto sirve para verificar que el archivo JS está cargando correctamente
-console.log("JS funcionando");
+console.log("JS funcionando"); // Verifica que el archivo JS esté cargando
 
-// =========================
-// ESPERAR A QUE CARGUE EL DOM
-// =========================
-// Asegura que todo el HTML esté cargado antes de ejecutar el JS
+// Espera a que todo el HTML cargue antes de ejecutar el código
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
-    // ELEMENTOS DEL DOM
+    // REFERENCIAS A ELEMENTOS
     // =========================
 
-    // Botón del sidebar para abrir el formulario de crear foro
+    // Botón del menú "Crear Foro"
     const btnCrear = document.getElementById("btnCrearForo");
 
     // Contenedor del formulario de crear foro
     const form = document.getElementById("createPost");
 
-    // Botón para cancelar el formulario
+    // Botón cancelar dentro del formulario
     const btnCancelar = document.getElementById("btnCancelar");
+
 
     // =========================
     // MOSTRAR / OCULTAR FORMULARIO
     // =========================
-    // Si existen los elementos necesarios
+
+    // Si existen el botón y el formulario
     if (btnCrear && form) {
 
-        // Evento click en "Crear Foro"
         btnCrear.addEventListener("click", (e) => {
 
-            // Evita que el link recargue la página
+            // Evita que el link haga navegación (#)
             e.preventDefault();
 
-            // Alterna la clase hidden (mostrar/ocultar formulario)
+            // Alterna la clase "hidden"
+            // Si está oculto → lo muestra
+            // Si está visible → lo oculta
             form.classList.toggle("hidden");
         });
     }
 
+
     // =========================
     // BOTÓN CANCELAR
     // =========================
+
     if (btnCancelar && form) {
 
-        // Evento click en cancelar
         btnCancelar.addEventListener("click", () => {
 
             // Oculta el formulario
             form.classList.add("hidden");
 
-            // =========================
-            // LIMPIAR CAMPOS
-            // =========================
-            // Borra el input de texto (temática)
-            form.querySelector("input[type='text']").value = "";
+            // Limpia el textarea (contenido del foro)
+            const textarea = form.querySelector("textarea");
 
-            // Borra el textarea (contenido)
-            form.querySelector("textarea").value = "";
+            if (textarea) textarea.value = "";
         });
     }
+
+
+    // =========================
+    // CLICK EN POST (REDIRECCIÓN)
+    // =========================
+
+    // Selecciona todos los div con clase "post"
+    document.querySelectorAll(".post").forEach(post => {
+
+        // Agrega evento click a cada post
+        post.addEventListener("click", () => {
+
+            // Obtiene el id desde data-id
+            const id = post.dataset.id;
+
+            // Si existe el id
+            if (id) {
+
+                // Redirige a foro.php pasando el id por URL
+                // Ejemplo: foro.php?id=3
+                window.location.href = `foro.php?id=${id}`;
+            }
+        });
+    });
 
 });

@@ -17,3 +17,13 @@ CREATE TABLE foro(
 
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 );
+
+CREATE TABLE comentario (
+    id_comentario INT AUTO_INCREMENT PRIMARY KEY,
+    id_foro INT,
+    id_usuario INT,
+    contenido TEXT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_foro) REFERENCES foro(id_foro),
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
+);

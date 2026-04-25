@@ -1,20 +1,25 @@
 <?php
+// =========================
+// INCLUIR ARCHIVOS NECESARIOS
+// =========================
 
-// =========================
-// INCLUIR FUNCIONES DE FOROS
-// =========================
-// Trae la función Mostrar_Foros() para mostrar los posts desde la BD
+// Importa la función que muestra los foros desde la base de datos
 include "../auth/mostrar_foros.php";
 
-// Inicia la sesión para poder usar variables del usuario logueado
+// Inicia la sesión (necesario para usar $_SESSION)
 session_start();
 
 // =========================
-// PROTECCIÓN DE RUTA
+// VALIDAR SESIÓN
 // =========================
-// Si no existe un usuario logueado, lo redirige al login
+
+// Verifica si el usuario está logueado
 if (!isset($_SESSION["user_id"])) {
+
+    // Si NO está logueado → lo redirige al login
     header("Location: ../index.php");
+
+    // Detiene la ejecución del script
     exit();
 }
 ?>
@@ -22,106 +27,109 @@ if (!isset($_SESSION["user_id"])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- Codificación de caracteres -->
+    <!-- Configuración básica -->
     <meta charset="UTF-8">
 
-    <!-- Diseño responsive para móviles -->
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Título de la página -->
     <title>GRUPPY</title>
 
-    <!-- Enlace al archivo CSS principal -->
+    <!-- Archivo de estilos -->
     <link rel="stylesheet" href="../public/css/styles.css">
-
 </head>
 <body>
 
-    <!-- ========================= -->
-    <!-- SIDEBAR / MENÚ LATERAL -->
-    <!-- ========================= -->
-    <nav class="sidebar">
+<!-- ========================= -->
+<!-- SIDEBAR (MENÚ IZQUIERDO) -->
+<!-- ========================= -->
+<nav class="sidebar">
 
-        <!-- Logo / título con ancla -->
-        <a href="#GRUPPY"><h1>GRUPPY</h1></a>
+    <!-- Logo / título -->
+    <a><h1>GRUPPY</h1></a>
 
-        <!-- Enlace a foros (aún sin funcionalidad) -->
-        <a href="#">Foros</a>
+    <!-- Opciones del menú -->
+    <a href="#">Foros</a>
 
-        <!-- Botón que muestra el formulario de crear foro -->
-        <a href="#" id="btnCrearForo">Crear Foro</a>
+    <!-- Botón que activa el formulario de crear foro (JS) -->
+    <a href="#" id="btnCrearForo">Crear Foro</a>
 
-        <!-- Botón de ajustes con alerta temporal -->
-        <a href="#" id="btnAjustes">Ajustes</a>
+    <!-- Botón de ajustes (actualmente sin funcionalidad real) -->
+    <a href="#" id="btnAjustes">Ajustes</a>
 
-        <!-- Logout del sistema -->
-        <a href="../auth/logout.php">Log out</a>
+    <!-- Cerrar sesión -->
+    <a href="../auth/logout.php">Log out</a>
 
-    </nav>
+</nav>
 
-    <!-- ========================= -->
-    <!-- CONTENIDO PRINCIPAL -->
-    <!-- ========================= -->
-    <div id="GRUPPY" class="main-content">
-
-        <!-- ========================= -->
-        <!-- FORMULARIO CREAR FORO -->
-        <!-- ========================= -->
-        <form action="../auth/crear_foro.php" method="POST">
-
-            <!-- Contenedor del formulario (oculto por defecto con clase hidden) -->
-            <div class="create-post hidden" id="createPost">
-
-                <!-- Título del formulario -->
-                <label>Crea un foro</label>
-
-                <!-- Input de temática -->
-                <input type="text" name="tematica_crear_foro" placeholder="Tematica" required>
-
-                <!-- Área de texto del contenido -->
-                <textarea name="texto_crear_foro" placeholder="Texto" required></textarea>
-
-                <!-- Botón para enviar el foro -->
-                <input type="submit" name="crear_foro" value="Crear">
-
-                <!-- Botón para cancelar y ocultar formulario -->
-                <input type="button" value="Cancelar" id="btnCancelar">
-            </div>
-
-        </form>
-
-        <!-- ========================= -->
-        <!-- LISTADO DE FOROS -->
-        <!-- ========================= -->
-        <!-- Llama a la función que imprime los posts desde la base de datos -->
-        <?php Mostrar_Foros(); ?>
-
-    </div>
+<!-- ========================= -->
+<!-- CONTENIDO PRINCIPAL -->
+<!-- ========================= -->
+<div class="main-content">
 
     <!-- ========================= -->
-    <!-- ARCHIVO JAVASCRIPT EXTERNO -->
+    <!-- FORMULARIO CREAR FORO -->
     <!-- ========================= -->
-    <script src="../public/js/app.js" defer></script>
+
+    <!-- Envía los datos a crear_foro.php -->
+    <form action="../auth/crear_foro.php" method="POST">
+
+        <!-- Contenedor del formulario (inicia oculto con class="hidden") -->
+        <div class="create-post hidden" id="createPost">
+
+            <!-- Título -->
+            <label>Crea un foro</label>
+
+            <!-- Input para la temática del foro -->
+            <input 
+                type="text" 
+                name="tematica_crear_foro" 
+                placeholder="Tematica" 
+                required
+            >
+
+            <!-- Área de texto para el contenido -->
+            <textarea 
+                name="texto_crear_foro" 
+                placeholder="Texto" 
+                required
+            ></textarea>
+
+            <!-- Botón enviar -->
+            <input 
+                type="submit" 
+                name="crear_foro" 
+                value="Crear"
+            >
+
+            <!-- Botón cancelar (oculta el formulario con JS) -->
+            <input 
+                type="button" 
+                value="Cancelar" 
+                id="btnCancelar"
+            >
+
+        </div>
+    </form>
 
     <!-- ========================= -->
-    <!-- SCRIPT TEMPORAL (AJUSTES) -->
+    <!-- MOSTRAR FOROS -->
     <!-- ========================= -->
-    <script>
-        // Espera a que cargue todo el DOM
-        document.addEventListener("DOMContentLoaded", () => {
 
-            // Obtiene el botón de ajustes
-            const btnAjustes = document.getElementById("btnAjustes");
+    <?php
+        // Llama a la función que imprime todos los foros
+        Mostrar_Foros();
+    ?>
 
-            // Evento click en ajustes
-            btnAjustes.addEventListener("click", (e) => {
-                e.preventDefault(); // Evita recargar la página
-                alert("Todavía no tiene función"); // Mensaje temporal
-            });
+</div>
 
-        });
-    </script>
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<!-- Archivo JS (maneja botones, mostrar/ocultar, navegación, etc.) -->
+<script src="../public/js/app.js" defer></script>
 
 </body>
 </html>
